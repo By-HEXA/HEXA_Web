@@ -42,7 +42,7 @@
                 text-decoration: none;
                 outline: none;    
             }
-            #PW, #PWR, #LN, #FN{
+            #PW, #PWR, #Lastname, #Firstname{
                 font-family: 'San Francisco', 'Helvetica Neue', 'Helvetica';
                 font-size: 20px;
                 color: #FFA500;
@@ -57,7 +57,7 @@
                 text-decoration: none;
                 outline: none;  
             }
-            #ID::placeholder,#PW::placeholder,#PWR::placeholder,#LN::placeholder,#FN::placeholder,#BR::placeholder,#Mail::placeholder{
+            #ID::placeholder,#PW::placeholder,#PWR::placeholder,#Lastname::placeholder,#Firstname::placeholder,#BR::placeholder,#Mail::placeholder{
                 font-size: 19px;
                 color: #f2f2f263;
             }
@@ -165,7 +165,8 @@
             <div id="title_1"><strong>HEXA</strong></div>
             <div id="title_2"><strong>가입하기</strong></div>
         </div>
-        <form id="Sign_up" action="#" method="post">
+        <form id="Sign_up" action="{% url 'HEXA_Web:SignUp' %}" method="post">
+            {% csrf_token %}
             <div id="input_sum">
                 <div id="input_1">
                     <div class="info_1">
@@ -181,8 +182,8 @@
                         <input type="text" name="BR" placeholder="생년월일을 입력하세요." id="BR" pattern='\d{4}\.\d{2}\.\d{2}' oninvalid="this.setCustomValidity('YYYY.MM.DD의 형식으로 생년월일을 입력하세요.')" oninput="setCustomValidity('')"  required>
                     </div>
                     <div class="info_4">
-                        <input type="text" name="LN" placeholder="성" id="LN", required oninvalid="this.setCustomValidity('성을 입력하세요.')" oninput="setCustomValidity('')" required>
-                        <input type="text" name="FN" placeholder="이름" id="FN", oninvalid="this.setCustomValidity('이름을 입력하세요.')" oninput="setCustomValidity('')" required>
+                        <input type="text" name="Lastname" placeholder="성" id="Lastname", required oninvalid="this.setCustomValidity('성을 입력하세요.')" oninput="setCustomValidity('')" required>
+                        <input type="text" name="Firstname" placeholder="이름" id="Firstname", oninvalid="this.setCustomValidity('이름을 입력하세요.')" oninput="setCustomValidity('')" required>
                     </div>
                 </div>
                 <div class="info_5">
