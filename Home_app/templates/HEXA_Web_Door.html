@@ -1,0 +1,52 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>HEXA_Web</title>
+        <meta charset="utf-8">
+        <meta http-equiv="refresh" content="30">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            ::selection {
+                background-color:  #f8d0e4;
+            }
+            body {
+                background-color: #be4215;
+                /* background: linear-gradient(135deg, #e0e0e0, #d4afcd, #fad0c4, #fbc2eb, #a18cd1, #b2e0f6, #d3d3d3); */
+                background-blend-mode: screen;
+                background-size: 300% 300%;
+                display: flex; 
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                box-sizing: border-box; 
+                height: 100vh;
+                overflow: hidden;
+            }
+            #title {
+                font-family: 'Knewave','San Francisco', 'Helvetica Neue', Helvetica;
+                font-size: 150px;
+                color:  #0D0D0D;
+                text-align: center;
+                transform: translateY(-35%);
+                margin: 0;
+            }
+            #Enter a {
+                font-family: 'Noto Sans KR','San Francisco', 'Helvetica Neue', Helvetica;
+                font-size: 33px;
+                color:  #f2f2f263;
+                text-decoration: none;
+                text-align: center;
+                margin: 0;
+            }
+            #Enter a:hover {
+                color: #f2f2f2da;
+            }
+        </style>   
+    </head> 
+    <body>
+         <div id="title">HEXA</div>
+         <div id="Enter"><a href="{% url 'Home_app:Home' %}"><strong>시작하기</strong></a></div>
+    </body>
+</html>
