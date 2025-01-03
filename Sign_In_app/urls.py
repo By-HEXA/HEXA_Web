@@ -17,11 +17,10 @@ Including another URLconf
 from django.urls import path, include
 from Sign_In_app import views
 
-app_name = 'HEXA_Web'
+app_name = 'Sign_app'
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('SignUp', views.SignUp, name='SignUp'),
-    path('SignIn', views.SignIn, name='SignIn'),
-    path('SignOut', views.SignOut, name='SignOut'),
+    path('Up', views.SignUp, name='SignUp'),
+    path('In', views.SignIn, name='SignIn'),
+    path('Out', views.SignOut, name='SignOut'),
 ]
