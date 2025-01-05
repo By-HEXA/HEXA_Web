@@ -48,6 +48,21 @@
                 border-bottom: 3.5px solid  #0D0D0D;
                 padding-bottom: 10px;
                 padding-left: 5px;
+                width: 355px;
+                text-decoration: none;
+                outline: none;    
+            }
+            #BR, #Mail, #SI{
+                font-family: 'Noto Sans KR', 'San Francisco', 'Helvetica Neue', 'Helvetica';
+                font-size: 20px;
+                color: #FFA500;
+                background-color: #be4215;
+                border-top: none;
+                border-right: none;
+                border-left: none;
+                border-bottom: 3.5px solid  #0D0D0D;
+                padding-bottom: 10px;
+                padding-left: 5px;
                 width: 530px;
                 text-decoration: none;
                 outline: none;    
@@ -189,8 +204,47 @@
                 justify-items: center; 
                 width: 500px;
                 position: absolute;
-                margin-top: 700px;
+                    top: 700px;
                 margin-left: 670px;
+            }
+            #check_id{
+                font-family: 'Noto Sans KR', 'San Francisco', 'Helvetica Neue', 'Helvetica';
+                background-color: transparent;
+                font-size: 17px;
+                color: #f2f2f263;               
+                border: 2.7px solid  #f2f2f263;
+                border-radius: 5px;    
+                height: 40px;
+                width: 120px;
+                margin-top: 5px;
+                margin-left: 97px;
+                padding: 0px;
+                cursor: pointer; 
+            }
+            #check_id:hover{
+                border-color: #FFA500;
+                color: #FFA500;
+            }
+            #message {
+                font-family: 'Noto Sans KR', 'San Francisco', 'Helvetica Neue', 'Helvetica';
+                background-color: transparent;
+                font-size: 23px;
+                color: #F2F2F2;
+                text-align: center;
+                width: 450px;
+                height: 50px;
+                border: 2.7px solid #F2F2F2;
+                border-radius: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-left: 50px;
+                margin-top: 30%;
+            }
+            #flash-messages{
+                top: 30%;
+                line-height: 50px;
+                width: 450px;
+                margin: 0px;
             }
         </style>   
     </head> 
@@ -205,6 +259,7 @@
                 <div id="input_1">
                     <div class="info_1">
                         <input type="text" name="ID" placeholder="ID" id="ID", oninvalid="this.setCustomValidity('ID를 입력하세요.')" oninput="setCustomValidity('')" required>
+                        <button type="button" id="check_id">ID 중복검사</button>
                     </div>
                     <div class="info_2">
                         <input type="password" name="PW" placeholder="Password" id="PW" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$" oninvalid="this.setCustomValidity('대문자, 숫자, 특수문자가 모두 포함된 8자리 이상의 Password를 입력하세요.')"  oninput="setCustomValidity('')" required>
@@ -238,6 +293,13 @@
                 <input type="submit" name="send" value="[ Sign up ]" id="create">
             </div>
         </form>
+        {% if messages %}
+            <div id="flash-messages">
+                {% for message in messages %}
+                    <div id="message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
         <script>
             document.getElementById('Sign_up').addEventListener('submit', function(event) {
                 var pw_1 = document.getElementById('PW');
@@ -256,6 +318,66 @@
                     pwr_1.style.color = '';
                 }
             });
+            document.getElementById('check_id').addEventListener('click', function() {
+                const idInput = document.getElementById('ID').value;
+                if (!idInput) {
+                    alert('ID를 입력하세요.');
+                    return;
+                }
+                fetch("{% url 'Sign_app:Check_ID' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({ ID: idInput })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.exists) {
+                        alert('이미 사용 중인 ID입니다.');
+                    } else {
+                        alert('사용 가능한 ID입니다.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+            document.addEventListener("DOMContentLoaded", function () {
+                const flashMessages = document.getElementById("flash-messages");
+                if (flashMessages) {
+                    setTimeout(() => {
+                        flashMessages.style.display = "none";
+                    }, 8000);
+                }
+            }); 
+            // document.getElementById('Sign_up').addEventListener('submit', function (event) {
+            //     const idInput = document.getElementById('ID').value;
+            //     if (!idInput) {
+            //         alert('ID를 입력하세요.');
+            //         return;
+            //     }
+            //     fetch("{% url 'Sign_app:SignUp' %}", {
+            //         method: 'POST',
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //             'X-CSRFToken': '{{ csrf_token }}'
+            //         },
+            //         body: JSON.stringify({ ID: idInput })
+            //     })
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         if (data.exists) {
+            //             alert('이미 사용 중인 ID입니다.');
+            //         } else {
+            //             alert('사용 가능한 ID입니다.');
+            //         }
+            //     })
+            //     .catch(error => {
+            //         console.error('Error:', error);
+            //     });
+            // });
         </script>
     </body>
 </html>
