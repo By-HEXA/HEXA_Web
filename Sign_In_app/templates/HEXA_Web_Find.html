@@ -1,0 +1,210 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>HEXA_Web_Find_ID</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            ::selection {
+                background-color:  #f8d0e4;
+            }
+            body{
+                width: 100%;
+                height: 100%;
+                background-color: #be4215;
+            }
+            #title_1 { 
+                font-family: 'Knewave', 'San Francisco', 'Helvetica Neue', 'Helvetica';
+                font-size: 85px;
+                color:  #0D0D0D;
+                width: 400px;
+                text-align: center;
+            }
+            #title_2{ 
+                font-family: 'Noto Sans KR', 'San Francisco', 'Helvetica Neue', 'Helvetica';
+                font-size: 60px;
+                font-weight: 900;
+                color:  #0D0D0D;
+                width: 400px;
+                text-align: center;
+            }
+            #title_sum{ 
+                position: absolute;
+                width: 400px;
+                align-items: center;
+                top: 30%;
+                margin-left: 60px;
+            }
+           #SI{
+                font-family: 'Noto Sans KR', 'San Francisco', 'Helvetica Neue', 'Helvetica';
+                font-size: 20px;
+                color: #FFA500;
+                background-color: #be4215;
+                border-top: none;
+                border-right: none;
+                border-left: none;
+                border-bottom: 3.5px solid  #0D0D0D;
+                padding-bottom: 10px;
+                padding-left: 5px;
+                width: 530px;
+                text-decoration: none;
+                outline: none;    
+            }
+            #Lastname, #Firstname{
+                font-family: 'Noto Sans KR', 'San Francisco', 'Helvetica Neue', 'Helvetica';
+                font-size: 20px;
+                color: #FFA500;
+                background-color: #be4215;
+                border-top: none;
+                border-right: none;
+                border-left: none;
+                border-bottom: 3.5px solid  #0D0D0D;
+                padding-bottom: 10px;
+                padding-left: 5px;
+                width: 230px;
+                text-decoration: none;
+                outline: none;  
+            }
+           #Lastname::placeholder, #Firstname::placeholder, #SI::placeholder{
+                font-size: 19px;
+                color: #f2f2f263;
+            }
+            .info_4{
+                display: grid;
+                grid-template-columns: 300px 500px; 
+                gap: 0px;
+                align-items: center; 
+                justify-content: center; 
+                width: 800px;
+            }
+            .info_5{
+                display: grid;
+                grid-template-columns: 300px 500px; 
+                gap: 0px;
+                align-items: center; 
+                justify-content: center; 
+                width: 800px;
+            }
+            #input_2{ 
+                display: grid;
+                grid-template-rows: 1fr 1fr; 
+                height: 150px;
+                margin-top: 40px;
+            }
+            #input_3{ 
+                display: grid;
+                grid-template-rows: 1fr 1fr; 
+                height: 150px;
+                margin-top: 40px;
+            }
+            #input_sum{
+                position: absolute;
+                top: 22%;
+                margin-left: 670px;
+            }            
+            #FindID{
+                font-family: 'Noto Sans KR', 'San Francisco', 'Helvetica Neue', 'Helvetica';
+                background-color: #be4215;
+                font-size: 20px;
+                color: #f2f2f263;               
+                border: none;     
+                height: 30px;
+                width: 200px;
+                cursor: pointer; 
+            }
+            #FindPassword {
+                font-family: 'Noto Sans KR', 'San Francisco', 'Helvetica Neue', 'Helvetica';
+                background-color: #be4215;
+                font-size: 20px;
+                color: #f2f2f263;               
+                border: none;     
+                height: 30px;
+                width: 200px;
+                padding: 0px;
+                cursor: pointer;   
+                text-decoration: none;
+            }
+            #FindID:hover{
+                color: #FFA500;
+            }
+            #FindPassword:hover{
+                color: #F2F2F2;
+            }
+            #ButtonBox{
+                background-color: transparent;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px;
+                justify-items: center; 
+                width: 500px;
+                position: absolute;
+                    top: 550px;
+                margin-left: 680px;
+            }
+            #message {
+                font-family: 'Noto Sans KR', 'San Francisco', 'Helvetica Neue', 'Helvetica';
+                background-color: transparent;
+                font-size: 23px;
+                color: #F2F2F2;
+                text-align: center;
+                width: 450px;
+                height: 50px;
+                border: 2.7px solid #F2F2F2;
+                border-radius: 5px;
+                height: 50px;
+                margin-left: 705px;
+                margin-top: 75px;
+            }
+            #flash-messages{
+                top: 30%;
+                line-height: 50px;
+                margin: 0px;
+            }
+        </style>   
+    </head> 
+    <body>
+        <div id="title_sum">
+            <div id="title_1">HEXA</strong></div>
+            <div id="title_2">찾아보기</strong></div>
+        </div>
+        <form id="Sign_up" action="{% url 'Sign_app:Find_ID' %}" method="post">
+            {% csrf_token %}
+            <div id="input_sum">
+                <div id="input_2">
+                    <div class="info_4">
+                        <input type="text" name="Lastname" placeholder="성" id="Lastname", required oninvalid="this.setCustomValidity('성을 입력하세요.')" oninput="setCustomValidity('')" required>
+                        <input type="text" name="Firstname" placeholder="이름" id="Firstname", oninvalid="this.setCustomValidity('이름을 입력하세요.')" oninput="setCustomValidity('')" required>
+                    </div>
+                </div>
+                <div id="input_3">
+                    <div class="info_5">
+                        <input type="text" name="SI" placeholder="학번을 입력하세요." id="SI" pattern = '^\d{10}$' oninvalid="this.setCustomValidity('XXXXXXXXXX의 형식으로 학번을 입력하세요.')" oninput="setCustomValidity('')"  required>
+                    </div>
+                </div>    
+            </div> 
+            <div id="ButtonBox">
+                <a id="FindPassword" href="{% url 'Sign_app:SignIn' %}">[ 비밀번호 찾아보기 ]</a>
+                <input type="submit" name="send" value="[ 아이디 찾아보기 ]" id="FindID">
+            </div>
+        </form>
+        {% if messages %}
+            <div id="flash-messages">
+                {% for message in messages %}
+                    <div id="message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const flashMessages = document.getElementById("flash-messages");
+                if (flashMessages) {
+                    setTimeout(() => {
+                        flashMessages.style.display = "none";
+                    }, 5000);
+                }
+            });
+        </script>
+    </body>
+</html>
