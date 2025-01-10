@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>공지사항</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'Home_app/upper.css' %}">
+    </head>
+    <body>
+        {% include 'Upper.html' %}
+        <div class="notice">
+            <div><a href="{% url 'Home_app:Notice' %}"><strong>공지사항</strong></a></div>
+            <div><a href="{% url 'Home_app:Suggest' %}"><strong>건의사항</strong></a></div>
+            <div><a href="{% url 'Home_app:Seminar' %}"><strong>세미나</strong></a></div>
+            <h1>공지사항</h1>
+            <p>HEXA의 공지사항입니다.</p>
+            <!-- 글쓰기 버튼 -->
+            <div>
+                <a href="{% url 'Home_app:Notice_write' %}">글쓰기</a>
+            </div>
+            <!-- 게시글 목록 -->
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>날짜</th>
+                    </tr>
+                </thead>
+            <tbody>
+                {% for post in posts %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="{% url 'Home_app:Notice_detail' post.id %}">{{ post.title }}</a></td>
+                    <td>{{ post.created_at|date:"Y-m-d H:i" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">게시글이 없습니다.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+
+            <!-- 페이지네이션 -->
+            <div style="margin-top: 20px;">
+                {% if posts.has_previous %}
+                <a href="?page={{ posts.previous_page_number }}">이전</a>
+                {% endif %}
+
+            <!-- 현재 페이지와 전체 페이지 번호 -->
+            <span>페이지 {{ posts.number }} / {{ posts.paginator.num_pages }}</span>
+
+                {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">다음</a>
+                {% endif %}
+            </div>
+        <script>
+        </script>
+    </body>
+</html>

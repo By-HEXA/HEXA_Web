@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+<html lang="kr">
+    <head>
+        <title>HEXA_Web_Home</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'Home_app/upper.css' %}">
+        <style>
+            .Minjae {
+                display: grid;
+                grid-template-columns: 150px 1fr;
+            }
+            .Minjae li{
+                font-size : 20px;
+            }
+            .Set {
+                padding-left: 20px;
+            }
+        </style>
+    </head> 
+    <body>
+        {% include 'Upper.html' %}
+        <div class="Set">
+            <h2>운영진 소개</h2>
+            <h3>이정복</h3>
+                <ul>
+                    <li><a>HEXA 1기 회장</a></li>
+                    <ol><a>???</a></ol>
+                </ul>
+            <h3>송민재</h3>
+            <div class="Minjae">
+                <img src="/media/photos/minjae.jpg" width="100%">
+                <ul>
+                    <li><a>HEXA 1기 부회장</a></li>
+                    <li><a>별명 : 간수치 3급</a></li>
+                    <li><a>여친 상시 모집중</a></li>
+                    <li><a>목도리 푸는 법을 모름 ㅋㅋ</a></li>
+                </ul>
+            </div>
+            <h3>김지환</h3>
+                <ul>
+                    <li><a>HEXA 1기 부회장</a></li>
+                    <li><a>별명 : 야지환</a></li>
+                    <li><a>고추 존나 큼 ㅋㅋ</a></li>
+                </ul>
+        </div>
+    </body>
+</html>

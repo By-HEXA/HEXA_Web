@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세</title>
+</head>
+<body>
+    <h1>게시글 상세</h1>
+
+    <!-- 게시글 내용 표시 -->
+    <div>
+        <p><strong>제목:</strong> {{ post.title }}</p>
+        <p><strong>작성일:</strong> {{ post.created_at|date:"Y-m-d H:i" }}</p>
+        <p><strong>내용:</strong></p>
+        <p>{{ post.content }}</p>
+        {% if post.image %}
+        <p><strong>첨부 이미지:</strong></p>
+        <img src="{{ post.image.url }}" alt="첨부 이미지" style="max-width: 100%;">
+        {% endif %}
+
+        {% if post.file %}
+        <p><strong>첨부 파일:</strong></p>
+        <a href="{{ post.file.url }}" download>다운로드</a>
+        {% endif %}
+        </div>
+
+    <!-- 수정 및 삭제 버튼 -->
+    <div>
+        <a href="{% url 'Home_app:Seminar_edit' post.id %}">수정하기</a>
+        <a href="{% url 'Home_app:Seminar_delete' post.id %}">삭제하기</a>
+    </div>
+
+    <!-- 목록으로 돌아가기 -->
+    <div>
+        <a href="{% url 'Home_app:Seminar' %}">목록으로</a>
+    </div>
+</body>
+</html>

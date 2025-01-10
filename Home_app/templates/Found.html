@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html lang="kr">
+    <head>
+        <title>HEXA_Web_Home</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'Home_app/upper.css' %}">
+        <style>
+            #name {
+                display: block;
+                font-weight: bolder;
+                text-align: center;
+                font-size: 20px;
+            }
+        </style>     
+    </head> 
+    <body>
+        {% include 'Upper.html' %}
+        <h1>HEXA</h1>
+        <a id="name">aHead to rEvamp, eXecute by dAta<br>
+            혁신으로 나아가고, 데이터에 의해 움직인다.
+        </a>
+        <ul>설립 날짜 : 2025.01.09</ul>
+
+        <h2>설립 목적</h2>
+        <ul>
+            <ol><a>학습과 경험에만 그치지 않고 실제 서비스의 단계까지, 
+                숨겨져 있는 문제들을 찾아내는 것이 바로 빅데이터응용학과입니다. 
+                이에 우리 HEXA는 단순히 문제를 찾아내는 것을 넘어, 
+                이를 개선하고 직접 해결해 나가고자 합니다.
+            </a></ol>
+        </ul>
+
+    </body>
+</html>
