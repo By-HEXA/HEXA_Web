@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기</title>
+</head>
+<body>
+    <h1>글쓰기</h1>
+
+    <form action="{% url 'Home_app:Notice_write' %}" method="post", enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">제목:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="content">내용:</label><br>
+        <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
+
+        <label for="image">이미지:</label>
+        <input type="file" id="image" name="image"><br><br>
+
+        <label for="file">파일:</label>
+        <input type="file" id="file" name="file"><br><br>
+
+        <button type="submit">등록</button>
+        <a href="{% url 'Home_app:Notice' %}">취소</a>
+    </form>
+</body>
+</html>

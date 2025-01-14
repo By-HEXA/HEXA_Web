@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 삭제</title>
+</head>
+<body>
+    <h1>게시글 삭제</h1>
+
+    <p>정말로 이 게시글을 삭제하시겠습니까?</p>
+
+    <!-- 삭제 확인 폼 -->
+    <form action="{% url 'Home_app:Notice_delete' post.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" style="color: red;">삭제</button>
+        <a href="{% url 'Home_app:Notice_detail' post.id %}">취소</a>
+    </form>
+</body>
+</html>
