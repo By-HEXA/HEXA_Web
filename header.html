@@ -1,0 +1,37 @@
+<header>
+    <div class="top">
+    <h1><a href="{% url 'Home_app:index' %}">HEXA</a></h1>
+    <div id="sign">
+        {% if user.is_authenticated %}
+            <a href="{% url 'Sign_app:SignIn' %}"><strong>Accountㆍ{{ user.last_name }}{{ user.first_name }}</strong></a>
+        {% else %}
+            <a href="{% url 'Sign_app:SignIn' %}"><strong>Sign inㆍSign up</strong></a>
+        {% endif %}
+    </div>
+    </div>
+    <ul class="content">
+        <li class="menu_item">
+            <a href="{% url 'Home_app:Found'%}"><strong>소개</strong></a>
+            <ul class="depth">
+                <li><a id="found" href="{% url 'Home_app:Found'%}">설립목적</a></li>
+                <li><a id="member" href="{% url 'Home_app:Member'%}">부원소개</a></li>
+            </ul>
+        </li>
+        <li class="menu_item">
+            <a href="{% url 'Home_app:Notice'%}"><strong>활동</strong></a>
+            <ul class="depth">
+                <li><a id="notice" href="{% url 'Home_app:Notice'%}">공지사항</a></li>
+                <li><a id="suggest" href="{% url 'Home_app:Suggest'%}">건의사항</a></li>
+                <li><a id="seminar" href="{% url 'Home_app:Seminar'%}">세미나</a></li>
+            </ul>
+        </li>
+        <li class="menu_item">
+            <a id="project" href="{% url 'Home_app:Idea'%}"><strong>프로젝트</strong></a>
+            <ul class="depth">
+                <li><a id="idea" href="{% url 'Home_app:Idea'%}">아이디어</a></li>
+                <li><a id="team" href="{% url 'Home_app:Team'%}">팀</a></li>
+            </ul>
+        </li>
+        <li><a id="attend" href="#"><strong>출결</strong></a></li>
+    </ul>
+</header>

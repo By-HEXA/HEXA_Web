@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html lang="kr">
+    <head>
+        <title>HEXA_Web_Home</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'Home_app/upper.css' %}">
+        <link rel="stylesheet" href="{% static 'Home_app/footer.css' %}">
+        <link rel="stylesheet" href="{% static 'Home_app/body.css' %}">
+        <style>
+            div {
+                display: grid;
+                grid-template-columns: 150px 1fr;
+            }
+            .li{
+                font-size : 20px;
+            }
+            .Set {
+                padding-left: 20px;
+            }
+        </style>
+    </head> 
+    <body>
+        {% include 'header.html' %}
+        <main class="Set">
+            <h2>운영진 소개</h2>
+            <h2>이정복</h2>
+            <div class="JeongBok">
+                <img src="/media/photos/jeongbok_member.jpg" width="100%">
+                <ul>
+                    <li><a>HEXA 1기 회장</a></li>
+                    <li><a>별명 : ㅈ복</a></li>
+                    <li><a>이새기는 항상 피곤함</a></li>
+                </ul>
+            </div>
+            <h2>송민재</h2>
+            <div class="Minjae">
+                <img src="/media/photos/minjae.jpg" width="100%">
+                <ul>
+                    <li><a>HEXA 1기 부회장</a></li>
+                    <li><a>별명 : 간수치 3급</a></li>
+                    <li><a>여친 상시 모집중</a></li>
+                    <li><a>목도리 푸는 법을 모름 ㅋㅋ</a></li>
+                </ul>
+            </div>
+            <h2>김지환</h2>
+            <div class="Jihwan">
+                <img src="/media/photos/jihwan.jpg" width="100%">
+                <ul>
+                    <li><a>HEXA 1기 부회장</a></li>
+                    <li><a>별명 : 야지환</a></li>
+                    <li><a>야추 ㅈㄴ 큼 ㅋㅋ</a></li>
+                </ul>
+            </div>
+        </main>
+        {% include 'footer.html' %}
+    </body>
+</html>

@@ -1,0 +1,68 @@
+body {
+    background-color:rgb(201, 200, 198);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.top {
+    font-family : 'Knewave', 'San Francisco', 'Helvetica Neue', Helvetica;
+    display : block;
+    align-items : center;
+    color :rgb(87, 31, 80);
+    padding : 5px 20px;
+}
+
+h1 {
+    font-size : 50px;
+    text-align : center;
+    font-weight: bold;
+    margin : 0px;
+}
+
+#sign {
+    font-size : 10px;
+    text-align : right;
+}
+
+.content {
+    font-family : 'Noto Sans KR', 'San Francisco', 'Helvetica Neue', Helvetica;
+    text-align : center;
+    display : grid;
+    grid-template-columns : 1fr 1fr 1fr 1fr;
+    gap : 10px;
+    background-color :rgb(13, 13, 13);
+    padding : 10px;
+    margin : 0px;
+    position : relative;
+}
+
+.menu_item a, #attend {
+    color: #F2F2F2;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+.menu_item a:hover, #attend:hover {
+    transform: scale(1.08);
+}
+.depth {
+    display: none;
+    background-color: rgb(13, 13, 13);
+    position: relative;
+    top: 0%;
+    left: 0;
+    padding: 10px;
+    border: 1px solid;
+    z-index: 1000;
+}
+
+.menu_item:hover .depth {
+    display: block;
+}
